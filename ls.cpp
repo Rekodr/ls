@@ -146,7 +146,8 @@ int ls(struct dirent* entry, unsigned int param, char* path){
 		if(path[strlen(path) -1] == '/')
 			sprintf(newPath, "%s%s", path, entry->d_name);
 		else
-		sprintf(newPath, "%s/%s", path, entry->d_name);
+			sprintf(newPath, "%s/%s", path, entry->d_name);
+		
 		printf(BOLDYELLOW"SUB FOLDER: %s:\n" ANSI_COLOR_RESET, newPath);
 		openDir(newPath, param);
 	}
