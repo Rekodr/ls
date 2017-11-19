@@ -1,6 +1,6 @@
 # Description:
 If you want to implement your own ls, here is a starting poing.
-  # implemented option: 
+  # implemented options: 
       -1:one ouptput per line
       -a:all 
       -i:inode
@@ -11,9 +11,9 @@ If you want to implement your own ls, here is a starting poing.
       -s:size
       -t:time
 # compile:
-gcc [gcc options] ls.c 
+    gcc [gcc options] ls.c 
 # use:
-programName [options] folder
-ex: a.out -p -1 file 
+    programName [options] folder
+    ex: a.out -p -1 file 
     a.out -p1 file
 
