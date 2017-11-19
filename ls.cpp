@@ -143,6 +143,9 @@ int ls(struct dirent* entry, unsigned int param, char* path){
 		printf("\n");
 
 	if (isDir && (param & RECUR)) {
+		if(path[strlen(path) -1] == '/')
+			sprintf(newPath, "%s%s", path, entry->d_name);
+		else
 		sprintf(newPath, "%s/%s", path, entry->d_name);
 		printf(BOLDYELLOW"SUB FOLDER: %s:\n" ANSI_COLOR_RESET, newPath);
 		openDir(newPath, param);
@@ -159,7 +162,7 @@ int openDir(char* path, unsigned int param){
 	if((dirPtr = opendir(path)) == NULL){
 		fprintf(stderr, "%s\n", strerror(errno));
 		//printf("Here: %s\n", path);
-		exit(1);
+		return -1;
 	}
 
 	while((entry = readdir(dirPtr))){
@@ -171,6 +174,7 @@ int openDir(char* path, unsigned int param){
 			ls(entry, param, path);
 		}
 	}
+	closedir(dirPtr);
 	return 0;
 }
 
